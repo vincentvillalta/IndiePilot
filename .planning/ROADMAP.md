@@ -51,7 +51,15 @@ The build order respects the research-derived dependency chain (Foundation -> Se
 4. Calling a logger that includes a fake `.p8` blob, JWT, or password in its payload writes a log line where those fields are redacted before transport.
 5. The `developers`, `users`, `sessions`, and `audit_log` tables exist in the database and Drizzle generates type-safe queries against them.
 
-**Plans**: TBD
+**Plans**: 6 plans
+
+Plans:
+- [ ] 01-01-PLAN.md — Workspace bootstrap (pnpm + Turborepo + Next.js 16 scaffold + Biome/ESLint sidecar + Vitest stubs) [Wave 1]
+- [ ] 01-02-PLAN.md — Database package (Drizzle 0.45 + Neon HTTP/Pool + 4 schema tables + audit helper + Faker seed) [Wave 2]
+- [ ] 01-03-PLAN.md — Logging + custom ESLint rule (Pino redaction + @axiomhq/pino transport + hashEmail + no-raw-log rule) [Wave 2]
+- [ ] 01-04-PLAN.md — Inngest wiring (client + health.check + serve() route + signing-key provisioning) [Wave 2]
+- [ ] 01-05-PLAN.md — CI + per-PR Neon preview branches (ci.yml + neon-branch.yml + watchdog cron) [Wave 3]
+- [ ] 01-06-PLAN.md — Bootstrap script + Vercel linking + README (cold-clone-to-running under 10 min) [Wave 3]
 
 ---
 
