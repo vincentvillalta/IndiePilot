@@ -1,0 +1,33 @@
+{
+  "name": "indiepilot",
+  "private": true,
+  "version": "0.0.0",
+  "packageManager": "pnpm@10.33.0",
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "bootstrap": "pnpm install && pnpm env:pull && pnpm db:migrate && pnpm db:seed",
+    "env:pull": "vercel env pull --environment=development apps/web/.env.local --cwd apps/web --yes",
+    "dev": "turbo run dev",
+    "build": "turbo run build",
+    "typecheck": "turbo run typecheck",
+    "lint": "biome check . && eslint .",
+    "lint:fix": "biome check --write . && eslint --fix .",
+    "test": "turbo run test",
+    "db:generate": "pnpm --filter @indiepilot/db db:generate",
+    "db:migrate": "pnpm --filter @indiepilot/db db:migrate",
+    "db:seed": "pnpm --filter @indiepilot/db db:seed",
+    "db:studio": "pnpm --filter @indiepilot/db db:studio",
+    "db:reset": "pnpm --filter @indiepilot/db db:reset"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "^2.3.0",
+    "@playwright/test": "^1.49.0",
+    "@types/node": "^20.17.0",
+    "eslint": "^9.16.0",
+    "turbo": "^2.3.0",
+    "typescript": "^5.6.0",
+    "vitest": "^3.2.0"
+  }
+}
