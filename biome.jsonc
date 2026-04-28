@@ -1,7 +1,12 @@
 {
-  "$schema": "https://biomejs.dev/schemas/2.3.0/schema.json",
-  "organizeImports": {
-    "enabled": true
+  "$schema": "https://biomejs.dev/schemas/2.4.13/schema.json",
+  "assist": {
+    "enabled": true,
+    "actions": {
+      "source": {
+        "organizeImports": "on"
+      }
+    }
   },
   "linter": {
     "enabled": true,
@@ -22,14 +27,21 @@
       "trailingCommas": "all"
     }
   },
+  "css": {
+    "parser": {
+      "tailwindDirectives": true
+    }
+  },
   "files": {
-    "ignore": [
-      "**/.next/**",
-      "**/dist/**",
-      "**/.turbo/**",
-      "**/drizzle/**",
-      "**/coverage/**",
-      "**/.vercel/**"
+    "includes": [
+      "**",
+      "!**/.next",
+      "!**/dist",
+      "!**/.turbo",
+      "!**/drizzle",
+      "!**/coverage",
+      "!**/.vercel",
+      "!**/node_modules"
     ]
   }
 }
