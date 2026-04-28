@@ -87,9 +87,16 @@ Out of this phase: developer auth (Phase 2), ASC key upload (Phase 2), any user-
 - Per-PR Neon preview branch: GitHub Action calls Neon API to create branch `pr-<NUMBER>` on PR open, runs `pnpm db:migrate` against it, and reports pass/fail. Branch is auto-deleted on PR close/merge.
 - Vercel-native preview deployment runs in parallel; CI doesn't gate it.
 
+### Locked Version Pins (post-research)
+
+- **Next.js 16.x** (current Active LTS as of 2026-04-28) — Next.js 15 dropped to Maintenance LTS in Oct 2025; Phase 1 starts on the actively-supported branch.
+- **Drizzle ORM 0.45.x** (current stable) — 1.0 is still in beta; revisit upgrade as a Phase 2 task once GA.
+- **Inngest signing keys provisioned in Phase 1**: account created, signing key + event key pulled into Vercel env (development + preview + production), so the `health.check` function can be invoked through Inngest Cloud on preview deploys, not just locally.
+- **Vercel linking:** per-app `vercel link` from `apps/web/`. `.vercel/` lives inside `apps/web/`. Revisit `vercel link --repo` if a second deployable app appears.
+
 ### Claude's Discretion
 
-- Specific package versions (Next 15.x, Drizzle 0.36 vs 1.0 RC, Inngest version) — the planner verifies current versions at scaffold time.
+- Specific patch versions (Next 16.x.y, Drizzle 0.45.x.y, Inngest version) — the planner uses latest patch at scaffold time.
 - Tailwind v4 setup specifics in `packages/ui` (CSS variables vs JS config, etc.).
 - Whether `packages/ui` is a build-step package (tsup) or a TypeScript-only package re-exported via `paths` — planner decides.
 - Exact Drizzle migration tooling (`drizzle-kit` push vs migrate vs studio) workflow.
