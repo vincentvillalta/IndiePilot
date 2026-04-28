@@ -3,13 +3,13 @@ gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
 status: "Roadmap created; ready for `/gsd:plan-phase 1`"
-last_updated: "2026-04-28T15:20:40.595Z"
+last_updated: "2026-04-28T20:47:22.262Z"
 progress:
   total_phases: 7
   completed_phases: 0
-  total_plans: 0
-  completed_plans: 0
-  percent: 0
+  total_plans: 6
+  completed_plans: 1
+  percent: 17
 ---
 
 # State: IndiePilot
@@ -31,14 +31,14 @@ progress:
 
 ## Current Position
 
-**Phase:** None (pre-Phase 1)
-**Plan:** None
-**Status:** Roadmap created; ready for `/gsd:plan-phase 1`
-**Progress:** 0 / 7 phases complete (0%)
+**Phase:** 1 of 7 (foundation)
+**Plan:** Current Plan: 2 of 6 (workspace bootstrap complete; ready for Plan 02 database package)
+**Status:** Plan 01-01 complete; scaffold green (typecheck/lint/test/build all exit 0)
+**Progress:** [██░░░░░░░░] 17%
 
 ```
-[░░░░░░░░░░░░░░░░░░░░] 0%
-Phase 1 ▢  Phase 2 ▢  Phase 3 ▢  Phase 4 ▢  Phase 5 ▢  Phase 6 ▢  Phase 7 ▢
+[██░░░░░░░░░░░░░░░░░░] 17%
+Phase 1 ▣  Phase 2 ▢  Phase 3 ▢  Phase 4 ▢  Phase 5 ▢  Phase 6 ▢  Phase 7 ▢
 ```
 
 ## Performance Metrics
@@ -46,9 +46,15 @@ Phase 1 ▢  Phase 2 ▢  Phase 3 ▢  Phase 4 ▢  Phase 5 ▢  Phase 6 ▢  Ph
 | Metric | Value |
 |--------|-------|
 | Phases completed | 0 / 7 |
-| Plans completed | 0 / 0 |
-| Requirements shipped | 0 / 96 |
+| Plans completed | 1 / 6 (Phase 1) |
+| Requirements shipped | 1 / 96 (FOUND-01) |
 | Phases gated by deeper research | 4 (Phases 2, 3, 5, 7 per research SUMMARY.md) |
+
+### Plan Execution Log
+
+| Phase | Plan | Duration | Tasks | Files | Date |
+|-------|------|----------|-------|-------|------|
+| 01-foundation | 01 (Workspace Bootstrap) | 5 min | 3 | 39 | 2026-04-28 |
 
 ## Accumulated Context
 
@@ -66,10 +72,20 @@ Phase 1 ▢  Phase 2 ▢  Phase 3 ▢  Phase 4 ▢  Phase 5 ▢  Phase 6 ▢  Ph
 | Concierge pre-seeding (30-50 apps) runs in parallel from Phase 5 onward | Pitfall #5: cold-start death spiral; supply must precede public iOS launch | Phase 7 closeout |
 | Two Better-Auth instances (cookie for devs, bearer for iOS users) | Different surfaces, different threat models, different session ergonomics | Phase 2 (devs) + Phase 4 (users) |
 | ASC API never called inline from Route Handlers | Pitfall #3: rate limit cascades; 202 + Inngest is the only safe pattern | Phase 5 |
+| Biome 2.4.13 (not 2.3.x) | `^2.3` resolved to latest 2.4 patch at install; required schema migration (organizeImports → assist, files.ignore → files.includes, css.parser.tailwindDirectives) | Phase 1 |
+| Vitest 3.2 ESM-only — `.test.mjs` for any non-`type:module` package | Vitest 3.x dropped CJS `require()` support; CJS packages (e.g. tooling/eslint-config) must use `.mjs` for tests | Phase 1 |
+| ESLint 9 flat-config replaces .eslintignore with in-config `ignores` array | Required to keep ESLint out of `.next/` build output | Phase 1 |
+| Workspace package names locked: @indiepilot/{web,ui,db,eslint-config} | Every Phase 1 plan and downstream phase references these exact names | Phase 1 |
 
 ### Active Todos
 
-- [ ] Plan Phase 1: Foundation (`/gsd:plan-phase 1`)
+- [x] Plan Phase 1: Foundation (`/gsd:plan-phase 1`) — DONE 2026-04-28
+- [x] Plan 01-01 Workspace Bootstrap — DONE 2026-04-28
+- [ ] Execute Plan 01-02 (Database Package) — `/gsd:execute-phase 1`
+- [ ] Execute Plan 01-03 (Logger + ESLint rule)
+- [ ] Execute Plan 01-04 (Inngest)
+- [ ] Execute Plan 01-05 (CI + Neon Branches)
+- [ ] Execute Plan 01-06 (Bootstrap + Docs)
 - [ ] Begin LAUNCH-01 concierge outreach planning (operational, parallel with Phase 5)
 - [ ] Schedule Apple TOS legal opinion before paid tier (Pitfall #1, post-Phase 7)
 
@@ -81,7 +97,7 @@ Phase 1 ▢  Phase 2 ▢  Phase 3 ▢  Phase 4 ▢  Phase 5 ▢  Phase 6 ▢  Ph
 | SIWA Hide-My-Email private relay -> TestFlight invite deliverability | Phase 5 | Vincent | Spike during Phase 5 |
 | Apple TOS interpretation for "service provider on TestFlight" | Phase 7 / paid tier | Legal | Get written opinion before paid tier |
 | Neon pgsodium availability as KMS alternative | Phase 2 | Vincent | Research during Phase 2 plan |
-| Drizzle 0.36 vs 1.0 RC version pin at scaffold time | Phase 1 | Vincent | Decide at Phase 1 plan |
+| Drizzle 0.36 vs 1.0 RC version pin at scaffold time | Phase 1 | Vincent | Resolved → Drizzle 0.45.x (per CONTEXT lock; lands in Plan 02) |
 
 ### Phases Flagged for Deeper Research
 
@@ -96,15 +112,18 @@ Phases skipping deeper research: 1 (Foundation), 4 (iOS App), 6 (Feedback/Funnel
 
 ## Session Continuity
 
-**Last session:** 2026-04-28T15:20:40.592Z
+**Last session:** 2026-04-28T20:44:40Z
+
+**Stopped at:** Completed 01-01-PLAN.md (Workspace Bootstrap). 3 atomic commits (5260855 chore, 6c25fb7 feat, 1393105 test). Quick gate green: `pnpm typecheck && pnpm lint && pnpm test && pnpm --filter @indiepilot/web build` all exit 0.
 
 **Next session entry point:**
 ```
-/gsd:plan-phase 1
+/gsd:execute-phase 1
 ```
+This will pick up Plan 01-02 (Database Package).
 
-**To resume context:** Read this file, then `.planning/PROJECT.md`, then `.planning/ROADMAP.md`. The research artifacts in `.planning/research/` (SUMMARY, ARCHITECTURE, PITFALLS, STACK, FEATURES) are the deep-context library — pull from them when planning specific phases.
+**To resume context:** Read this file, then `.planning/phases/01-foundation/01-01-SUMMARY.md` for what just shipped, then `.planning/phases/01-foundation/01-02-PLAN.md` for the next plan. The research artifacts in `.planning/research/` and `.planning/phases/01-foundation/01-{CONTEXT,RESEARCH,VALIDATION}.md` provide deep context.
 
 ---
 *State initialized: 2026-04-28*
-*Last updated: 2026-04-28 after roadmap creation*
+*Last updated: 2026-04-28 after Plan 01-01 execution*

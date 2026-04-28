@@ -9,7 +9,7 @@ Requirements for initial release. Each maps to roadmap phases.
 
 ### Foundation
 
-- [ ] **FOUND-01**: Project scaffolding (Next.js 15 App Router, TypeScript, Drizzle, Neon, Tailwind, shadcn/ui, Biome, Vitest, Playwright)
+- [x] **FOUND-01**: Project scaffolding (Next.js 15 App Router, TypeScript, Drizzle, Neon, Tailwind, shadcn/ui, Biome, Vitest, Playwright)
 - [ ] **FOUND-02**: Database schema baseline (`developers`, `users`, `sessions`, `audit_log`) with Drizzle migrations
 - [ ] **FOUND-03**: CI runs migrations against per-PR Neon preview branches
 - [ ] **FOUND-04**: Logging baseline (Pino with PII/key/JWT redaction allowlist)
@@ -212,7 +212,7 @@ Every v1 requirement maps to exactly one phase in `.planning/ROADMAP.md`. 100% c
 
 | Requirement | Phase | Status |
 |-------------|-------|--------|
-| FOUND-01 | Phase 1 | Pending |
+| FOUND-01 | Phase 1 | Complete |
 | FOUND-02 | Phase 1 | Pending |
 | FOUND-03 | Phase 1 | Pending |
 | FOUND-04 | Phase 1 | Pending |

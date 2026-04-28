@@ -188,7 +188,7 @@ Plans:
 
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
-| 1. Foundation | 0/0 | Not started | - |
+| 1. Foundation | 1/6 | In Progress|  |
 | 2. Developer Onboarding & Security Foundation | 0/0 | Not started | - |
 | 3. Developer App Management & Public Discovery API | 0/0 | Not started | - |
 | 4. iOS App — Discovery & Auth | 0/0 | Not started | - |
