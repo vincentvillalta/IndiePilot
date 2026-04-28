@@ -1,0 +1,8 @@
+@import "tailwindcss";
+@source "../../../apps/web";
+@source "../../../packages/ui/src";
+
+@theme {
+  --color-brand-50: oklch(0.97 0.02 80);
+  /* Phase 2 BRAND-01 fills in the real palette; Phase 1 ships placeholder */
+}
