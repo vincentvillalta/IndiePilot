@@ -208,17 +208,130 @@ Explicitly excluded. Documented to prevent scope creep.
 
 ## Traceability
 
-To be populated by gsd-roadmapper.
+Every v1 requirement maps to exactly one phase in `.planning/ROADMAP.md`. 100% coverage.
 
 | Requirement | Phase | Status |
 |-------------|-------|--------|
-| (populated during roadmap creation) | | |
+| FOUND-01 | Phase 1 | Pending |
+| FOUND-02 | Phase 1 | Pending |
+| FOUND-03 | Phase 1 | Pending |
+| FOUND-04 | Phase 1 | Pending |
+| FOUND-05 | Phase 1 | Pending |
+| DEV-AUTH-01 | Phase 2 | Pending |
+| DEV-AUTH-02 | Phase 2 | Pending |
+| DEV-AUTH-03 | Phase 2 | Pending |
+| DEV-AUTH-04 | Phase 2 | Pending |
+| DEV-AUTH-05 | Phase 2 | Pending |
+| DEV-AUTH-06 | Phase 2 | Pending |
+| DEV-KEY-01 | Phase 2 | Pending |
+| DEV-KEY-02 | Phase 2 | Pending |
+| DEV-KEY-03 | Phase 2 | Pending |
+| DEV-KEY-04 | Phase 2 | Pending |
+| DEV-KEY-05 | Phase 2 | Pending |
+| DEV-KEY-06 | Phase 2 | Pending |
+| DEV-KEY-07 | Phase 2 | Pending |
+| DEV-KEY-08 | Phase 2 | Pending |
+| DEV-APP-01 | Phase 3 | Pending |
+| DEV-APP-02 | Phase 3 | Pending |
+| DEV-APP-03 | Phase 3 | Pending |
+| DEV-APP-04 | Phase 3 | Pending |
+| DEV-APP-05 | Phase 3 | Pending |
+| DEV-APP-06 | Phase 3 | Pending |
+| DEV-APP-07 | Phase 3 | Pending |
+| DEV-APP-08 | Phase 3 | Pending |
+| DEV-APP-09 | Phase 3 | Pending |
+| DEV-APP-10 | Phase 3 | Pending |
+| DEV-APP-11 | Phase 3 | Pending |
+| DEV-APP-12 | Phase 3 | Pending |
+| USER-AUTH-01 | Phase 4 | Pending |
+| USER-AUTH-02 | Phase 4 | Pending |
+| USER-AUTH-03 | Phase 4 | Pending |
+| USER-AUTH-04 | Phase 4 | Pending |
+| USER-AUTH-05 | Phase 4 | Pending |
+| USER-AUTH-06 | Phase 4 | Pending |
+| USER-AUTH-07 | Phase 4 | Pending |
+| DISC-01 | Phase 4 | Pending |
+| DISC-02 | Phase 4 | Pending |
+| DISC-03 | Phase 4 | Pending |
+| DISC-04 | Phase 4 | Pending |
+| DISC-05 | Phase 4 | Pending |
+| DISC-06 | Phase 4 | Pending |
+| DISC-07 | Phase 4 | Pending |
+| WEDGE-01 | Phase 5 | Pending |
+| WEDGE-02 | Phase 5 | Pending |
+| WEDGE-03 | Phase 5 | Pending |
+| WEDGE-04 | Phase 5 | Pending |
+| WEDGE-05 | Phase 5 | Pending |
+| WEDGE-06 | Phase 5 | Pending |
+| WEDGE-07 | Phase 5 | Pending |
+| WEDGE-08 | Phase 5 | Pending |
+| WEDGE-09 | Phase 5 | Pending |
+| WEDGE-10 | Phase 5 | Pending |
+| WEDGE-11 | Phase 5 | Pending |
+| WEDGE-12 | Phase 5 | Pending |
+| WEDGE-13 | Phase 5 | Pending |
+| WEDGE-14 | Phase 5 | Pending |
+| WEDGE-15 | Phase 5 | Pending |
+| WEDGE-16 | Phase 5 | Pending |
+| FB-01 | Phase 6 | Pending |
+| FB-02 | Phase 6 | Pending |
+| FB-03 | Phase 6 | Pending |
+| FB-04 | Phase 6 | Pending |
+| FB-05 | Phase 6 | Pending |
+| FB-06 | Phase 6 | Pending |
+| FB-07 | Phase 6 | Pending |
+| FB-08 | Phase 6 | Pending |
+| FB-09 | Phase 6 | Pending |
+| FB-10 | Phase 6 | Pending |
+| FB-11 | Phase 6 | Pending |
+| FB-12 | Phase 6 | Pending |
+| FUN-01 | Phase 6 | Pending |
+| FUN-02 | Phase 6 | Pending |
+| FUN-03 | Phase 6 | Pending |
+| FUN-04 | Phase 6 | Pending |
+| FUN-05 | Phase 6 | Pending |
+| FUN-06 | Phase 6 | Pending |
+| FUN-07 | Phase 6 | Pending |
+| FUN-08 | Phase 6 | Pending |
+| FUN-09 | Phase 6 | Pending |
+| SDK-01 | Phase 7 | Pending |
+| SDK-02 | Phase 7 | Pending |
+| SDK-03 | Phase 7 | Pending |
+| SDK-04 | Phase 7 | Pending |
+| SDK-05 | Phase 7 | Pending |
+| SDK-06 | Phase 7 | Pending |
+| SDK-07 | Phase 7 | Pending |
+| SDK-08 | Phase 7 | Pending |
+| SDK-09 | Phase 7 | Pending |
+| SDK-10 | Phase 7 | Pending |
+| SDK-11 | Phase 7 | Pending |
+| OPS-01 | Phase 7 | Pending |
+| OPS-02 | Phase 7 | Pending |
+| OPS-03 | Phase 7 | Pending |
+| OPS-04 | Phase 7 | Pending |
+| OPS-05 | Phase 7 | Pending |
+| OPS-06 | Phase 7 | Pending |
+| OPS-07 | Phase 7 | Pending |
+| OPS-08 | Phase 7 | Pending |
+| OPS-09 | Phase 2 | Pending |
+| OPS-10 | Phase 5 | Pending |
+| BRAND-01 | Phase 2 | Pending |
+| BRAND-02 | Phase 2 | Pending |
+| BRAND-03 | Phase 4 | Pending |
+| BRAND-04 | Phase 2 | Pending |
+| BRAND-05 | Phase 4 | Pending |
+| LAUNCH-01 | Phase 7 | Pending |
+| LAUNCH-02 | Phase 7 | Pending |
+| LAUNCH-03 | Phase 7 | Pending |
+| LAUNCH-04 | Phase 7 | Pending |
+| LAUNCH-05 | Phase 7 | Pending |
+| LAUNCH-06 | Phase 7 | Pending |
 
 **Coverage:**
 - v1 requirements: 96 total
-- Mapped to phases: 0 (pending roadmap)
-- Unmapped: 96
+- Mapped to phases: 96 (100%)
+- Unmapped: 0
 
 ---
 *Requirements defined: 2026-04-28*
-*Last updated: 2026-04-28 after initial definition*
+*Last updated: 2026-04-28 after roadmap traceability mapping*
