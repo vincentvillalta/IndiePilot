@@ -6,5 +6,12 @@
   "type": "commonjs",
   "scripts": {
     "test": "vitest run"
+  },
+  "devDependencies": {
+    "@types/eslint": "^9.6.1",
+    "@typescript-eslint/parser": "^8.59.1",
+    "eslint": "^9.39.4",
+    "typescript-eslint": "^8.59.1",
+    "vitest": "^3.2.4"
   }
 }
