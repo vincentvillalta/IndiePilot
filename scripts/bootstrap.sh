@@ -49,7 +49,11 @@ if [[ ! -f "apps/web/.vercel/project.json" ]]; then
   then re-run \`pnpm bootstrap\`."
 fi
 
-vercel env pull --environment=development apps/web/.env.local --cwd apps/web --yes
+# Vercel CLI 52.x quirk: pulling directly to apps/web/.env.local silently
+# filters out some vars. Pulling to /tmp first then moving works around it.
+TMP_ENV=$(mktemp)
+vercel env pull --environment=development "${TMP_ENV}" --cwd apps/web --yes
+mv "${TMP_ENV}" apps/web/.env.local
 
 if [[ ! -f "apps/web/.env.local" ]]; then
   fail "vercel env pull completed but apps/web/.env.local does not exist. Verify your Vercel project has env vars set in the Development scope."
