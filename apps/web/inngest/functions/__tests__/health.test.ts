@@ -1,4 +1,4 @@
-import { describe, it, expect, vi } from "vitest";
+import { describe, expect, it, vi } from "vitest";
 import { healthCheck, healthHandler } from "../health";
 
 describe("FOUND-05: health.check function", () => {
@@ -8,18 +8,13 @@ describe("FOUND-05: health.check function", () => {
   });
 
   it("function trigger event is 'health/check.requested'", () => {
-    // The triggers are stored on the function instance; in v4 they're available
-    // via the function's stringified config — this shape is stable across patches.
-    const json = JSON.parse(JSON.stringify(healthCheck));
-    const triggers = json.triggers ?? json.opts?.triggers ?? [];
-    expect(
-      triggers.some(
-        (t: unknown) =>
-          typeof t === "object" &&
-          t !== null &&
-          (t as { event?: string }).event === "health/check.requested",
-      ),
-    ).toBe(true);
+    // v4.2.x: triggers live on `opts.triggers` (declared `readonly opts` on
+    // InngestFunction). The instance has cycles (client <-> localFns) so we
+    // must NOT JSON.stringify the whole function — read opts directly.
+    const triggers =
+      (healthCheck as unknown as { opts: { triggers?: Array<{ event?: string }> } }).opts
+        .triggers ?? [];
+    expect(triggers.some((t) => t.event === "health/check.requested")).toBe(true);
   });
 
   it("handler (healthHandler) returns { ok: true, receivedAt: event.ts }", async () => {
