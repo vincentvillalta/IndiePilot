@@ -30,6 +30,10 @@ jobs:
           project_id: ${{ secrets.NEON_PROJECT_ID }}
           branch_name: pr-${{ github.event.number }}
           api_key: ${{ secrets.NEON_API_KEY }}
+          # Project has Neon Auth enabled (authenticator/anonymous/authenticated roles).
+          # Pin to neondb_owner — same role our app uses via DATABASE_URL.
+          username: neondb_owner
+          database: neondb
 
       - name: Apply migrations
         env:
