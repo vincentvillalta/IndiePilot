@@ -1,0 +1,51 @@
+name: Neon Branch Watchdog
+
+# Daily sweep: list pr-* branches and delete any whose PR is closed/merged.
+# Belt-and-suspenders for Pitfall 5 — workflow gates that miss the close event.
+
+on:
+  schedule:
+    - cron: '0 3 * * *'   # 03:00 UTC daily
+  workflow_dispatch:
+
+jobs:
+  sweep:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      pull-requests: read
+    steps:
+      - name: List Neon pr-* branches and delete orphans
+        env:
+          NEON_API_KEY: ${{ secrets.NEON_API_KEY }}
+          NEON_PROJECT_ID: ${{ vars.NEON_PROJECT_ID }}
+          GH_TOKEN: ${{ github.token }}
+          REPO: ${{ github.repository }}
+        run: |
+          set -euo pipefail
+          # 1. List all Neon branches matching pr-*
+          branches=$(curl -fsS \
+            -H "Authorization: Bearer ${NEON_API_KEY}" \
+            "https://console.neon.tech/api/v2/projects/${NEON_PROJECT_ID}/branches" \
+            | jq -r '.branches[] | select(.name | startswith("pr-")) | .name')
+
+          if [[ -z "${branches}" ]]; then
+            echo "No pr-* branches to check."
+            exit 0
+          fi
+
+          # 2. For each, check the PR state via gh CLI; delete if closed or non-existent.
+          for branch in ${branches}; do
+            pr_num="${branch#pr-}"
+            state=$(gh pr view "${pr_num}" --repo "${REPO}" --json state --jq '.state' 2>/dev/null || echo "MISSING")
+
+            if [[ "${state}" == "MERGED" || "${state}" == "CLOSED" || "${state}" == "MISSING" ]]; then
+              echo "Deleting orphaned Neon branch ${branch} (PR #${pr_num} state: ${state})"
+              curl -fsS -X DELETE \
+                -H "Authorization: Bearer ${NEON_API_KEY}" \
+                "https://console.neon.tech/api/v2/projects/${NEON_PROJECT_ID}/branches/${branch}" \
+                || echo "Failed to delete ${branch} — may already be gone"
+            else
+              echo "Keeping ${branch} (PR #${pr_num} state: ${state})"
+            fi
+          done
